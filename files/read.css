@@ -1,0 +1,333 @@
+@charset "utf-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 微软雅黑, "Microsoft YaHei";
+	background-color: #000000;
+	background-image: url("");
+	background-attachment: fixed;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* 文章部分 */
+article {
+	position: absolute;
+	top: 0;
+	left: calc(50% - 240px);
+	padding: 16px;
+	padding-top: 64px;
+	width: 448px;
+	cursor: default;
+}
+blockquote {
+	font-family: KaiTi, 楷体;
+}
+h1, h2 {
+	font-style: normal;
+	font-family: 微软雅黑, "Microsoft YaHei";
+	text-indent: 0;
+}
+h1 {
+	font-size: 22px;
+}
+h2 {
+	font-size: 20px;
+}
+
+/* 导航栏部分 */
+#header {
+	position: fixed;
+	top: 0;
+	left: calc(50% - 240px);
+	margin: 0 auto;
+	padding: 0;
+	width: 480px;
+	text-align: center;
+}
+#header>div {
+	display: inline-block;
+	vertical-align: top;
+	height: 24px;
+	background-color: #FFD800;
+	font-size: 18px;
+}
+#menu-btn {
+	border-radius: 0 20px 20px 0;
+	padding: 10px 8px 6px 6px;
+	width: 34px;
+	background-position: 5px 10px;
+	background-repeat: no-repeat;
+}
+#menu-btn:hover {
+	cursor: pointer;
+	box-shadow: -3px 0 5px 2px #FF99FF inset;
+}
+#book-title {
+	margin: 0 6px;
+	padding: 8px;
+	width: 300px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+	cursor: default;
+}
+#page-number {
+	padding: 8px;
+	width: 88px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: default;
+}
+#menu {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: calc(50% - 148px);
+	margin: 0;
+	border-radius: 0 0 20px 20px;
+	padding: 8px 16px;
+	height: 24px;
+	width: 264px;
+	background-color: #FFCCFF;
+	font-weight: bold;
+}
+#menu>div {
+	display: inline-block;
+	margin: 0 10px;
+	border-radius: 5px;
+	padding: 3px 5px;
+	height: 20px;
+	width: 36px;
+	background-repeat: no-repeat;
+	background-position: 6px 3px;
+}
+#menu>div:hover {
+	cursor: pointer;
+	box-shadow: 0 0 5px 0 #000000;
+}
+
+/* 设置页面部分 */
+div.button {
+	display: inline-block;
+	margin: 0 30px;
+	padding: 0 5px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #FFFFFF #888888 #888888 #FFFFFF;
+	font-size: 16px;
+	border-radius: 5px;
+}
+div.button:hover,
+input:hover,
+select:hover{
+	cursor: pointer;
+}
+output {
+	display: inline-block;
+	width: 30px;
+	height: 16px;
+	font-family: "Courier New";
+	vertical-align: text-top;
+	text-align: center;
+}
+output.output {
+	background-color: #00D8CC;
+}
+input {
+	width: 200px;
+	vertical-align: bottom;
+}
+
+#render {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: calc(50% - 240px);
+	width: 480px;
+	height: 100%;
+}
+#effect {
+	overflow: auto;
+	border: 16px solid #FFD800;
+	width: 448px;
+	height: 160px;
+	text-align: center;
+	background-color: #FFFFFF;
+}
+#effect>p {
+	margin: 0;
+	padding: 0;
+}
+div.set-panel {
+	overflow: scroll;
+	border-style: solid;
+	border-color: #FFD800;
+	border-width: 0 16px;
+	width: 448px;
+	height: calc(100% - 236px);
+	background-color: #FFFFFF;
+}
+div.panel {
+	margin: 16px;
+	font-size: 16px;
+	background-color: #FFCCFF;
+}
+div.panel>div {
+	padding: 8px;
+	overflow:hidden;
+}
+div.show-hide {
+	margin-left: 16px;
+}
+#advance-set {
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+	margin: 0 5px;
+	border-radius: 5px;
+	padding: 2px;
+	width: 18px;
+	height: 18px;
+	vertical-align: bottom;
+}
+#advance-set:hover {
+	box-shadow: 0 0 5px 0 #000000;
+}
+#advance-panel {
+	display: none;
+}
+div.advance-title {
+	font-weight: bold;
+	text-align: center;
+}
+div.shadow-color>input {
+	width: 180px;
+}
+
+div.control {
+	border-style: solid;
+	border-color: #FFD800;
+	border-width: 8px 16px;
+	height: 28px;
+	width: 448px;
+	text-align: center;
+	background-color: #FFD800;
+}
+div.control>div {
+	display: inline-block;
+	margin-right: 0;
+	border-radius: 10px;
+	vertical-align: bottom;
+}
+div.control>div:hover {
+	cursor: pointer;
+	box-shadow: 0 0 5px 2px #000000;
+}
+div.do {
+	margin: 0 10px;
+	padding: 5px 10px;
+	height: 16px;
+	width: 38px;
+	background-repeat: no-repeat;
+	background-position: 10px 5px;
+}
+div.ae {
+	margin: 0 30px;
+	padding: 2px 5px;
+	height: 24px;
+	width: 40px;
+	background-repeat: no-repeat;
+}
+#apply {
+	margin-left: 80px;
+	background-position: 5px 3px;
+}
+#exit {
+	background-position: 6px 3px;
+}
+
+#contents {
+	display: none;
+	position: fixed;
+	top: 40px;
+	left: calc(50% - 50px);
+	border: 8px solid #FFD800;
+	max-height: 300px;
+	width: 180px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+#contents>ul {
+	padding-left: 0;
+}
+#contents>ul ul {
+	padding-left: 2rem;
+	padding-right: 1rem;
+}
+#contents li {
+	list-style: none;
+}
+#contents>ul>li {
+	margin-bottom: 1rem;
+}
+#contents>ul ul>li {
+	cursor: pointer;
+	color: #888888;
+}
+#contents>ul ul>li:hover {
+	color: #000000;
+}
+#detail {
+	display: none;
+	position: fixed;
+	top: 40px;
+	left: calc(50% - 142px);
+	border: 8px solid #FFD800;
+	padding: 8px;
+	max-height: 500px;
+	width: 350px;
+	overflow: auto;
+	background-color: #FFFFFF;
+	font-size: 14px;
+}
+#detail>p {
+	text-indent: -28px;
+	padding-left: 28px;
+}
+#account {
+	display: none;
+	position: fixed;
+	top: 40px;
+	left: calc(50% + 68px);
+	border: 8px solid #FFD800;
+	padding: 8px;
+	max-height: 300px;
+	width: 140px;
+	overflow: auto;
+	background-color: #FFFFFF;
+	font-size: 14px;
+}
+#account a {
+	text-decoration: none;
+	color: #AAAAAA;
+}
+#account a:hover {
+	color: #000000;
+}
+#book-list>ul {
+	margin: 0;
+	margin-top: 14px;
+	padding: 0;
+	padding-left: 28px;
+}
+#book-list>ul>li {
+	list-style: none;
+}

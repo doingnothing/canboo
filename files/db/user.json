@@ -1,0 +1,8 @@
+{
+	"title": "user",
+	"field": ["username", "password", "date"],
+	"rows": [
+		["CnMonkey", "29ourziai", "2014-12-18T07:02:02.303Z"],
+		["nobody", "1", "2014-12-18T13:49:15.475Z"]
+	]
+}

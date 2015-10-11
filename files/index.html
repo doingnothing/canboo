@@ -1,0 +1,676 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>一起啃书</title>
+	<link rel="icon" href="images/logo.png">
+<style>
+body {
+	margin: 0;
+	font-family: 微软雅黑, "Microsoft YaHei";
+}
+input {
+	font-family: 微软雅黑, "Microsoft YaHei";
+	outline: none;
+}
+header,
+header>ul {
+	font-size: 0;
+}
+header {
+	margin: 0 auto;
+	padding: 1rem;
+	height: 3.375rem;
+	min-width: 48rem;
+	text-align: center;
+	background-color: #FFD800;
+}
+header>*,
+header>ul>li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	font-size: 1rem;
+}
+header>h1 {
+	font-size: 2.5rem;
+	cursor: default;
+}
+header>input[type="text"] {
+	margin-left: 4rem;
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
+	height: 1rem;
+	width: 12rem;
+	color: #000000;
+	font-size: 0.875rem;
+}
+header>input[type="button"] {
+	margin: 0 3rem 0 1rem;
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	height: calc(1.5rem + 2px);
+	width: calc(2.5rem + 2px);
+	font-size: 0.875rem;
+	cursor: pointer;
+	background-color: #FFFFFF;
+}
+header>input[type="text"]:focus,
+header>input[type="button"]:hover {
+	border-color: #000000;
+}
+header>ul {
+	display: none;
+	vertical-align: top;
+}
+header>ul>li {
+	margin: 0 0.5rem;
+	color: #AAAAAA;
+	cursor: pointer;
+}
+header>ul>li:hover {
+	color: #000000;
+}
+ul#user {
+	position: absolute;
+	margin: 0;
+	border: 0.5rem solid #FFD800;
+	padding: 0.5rem;
+	background-color: #FFFFFF;
+	font-size: 0.875rem;
+}
+ul#user li {
+	list-style: none;
+}
+#book-list>ul {
+	padding-left: 1.75rem;
+}
+#book-list>ul>li {
+	color: #FF0000;
+}
+#book-list li>a {
+	color: #AAAAAA;
+	text-decoration: none;
+}
+#book-list li>a:hover {
+	color: #000000;
+}
+#shade {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+#in, #up {
+	display: none;
+	position: absolute;
+	top: 6rem;
+	left: calc(50% - 10rem);
+	border: 1px solid #000000;
+	width: 20rem;
+	font-size: 1rem;
+	background-color: #FFFFFF;
+}
+div.sign-title {
+	padding: 0.5rem 1rem;
+	background-color: #FFD800;
+}
+div.sign-title>* {
+	display: inline-block;
+}
+output {
+	margin: 0 1.5rem;
+	width: 10rem;
+	color: #FF0000;
+}
+div#in-close-btn,
+div#up-close-btn {
+	color: #FF7777;
+	cursor: pointer;
+	text-decoration: underline;
+}
+div#in-close-btn:hover,
+div#up-close-btn:hover {
+	color: #FF0000;
+}
+form {
+	margin: 1rem;
+}
+form>input.text {
+	display: inline;
+	margin-top: 0.5rem;
+	margin-bottom: 2rem;
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	padding: 0.5rem;
+	height: 1.25rem;
+	width: calc(17rem - 2px);
+	font-size: 1rem;
+}
+form>input.text:focus {
+	border: 1px solid #AAAAAA;
+	border-color: #FFD800;
+	box-shadow: 0 0 5px 1px #FFD800;
+}
+form>input.button {
+	margin: 0 5rem;
+	border-width: 0;
+	border-radius: 10px;
+	height: 3rem;
+	width: 8rem;
+	font-size: 2rem;
+	background-color: #FFD800;
+	color: #000000;
+	cursor: pointer;
+}
+a#forget-password {
+	text-decoration: underline;
+	font-size: 1rem;
+	color: #AAAAAA;
+	cursor: pointer;
+}
+a#forget-password:hover {
+	color: #000000;
+}
+
+div.body {
+	margin: 2rem auto;
+	margin-top: 0;
+	padding-top: 2rem;
+	width: 51rem;
+}
+div.body>* {
+	display: inline-block;
+	vertical-align: top;
+}
+div.body>main {
+	width: 42rem;
+}
+main>div {
+	display: inline-block;
+}
+div#more {
+	margin-top: 2rem;
+	border: 1px solid #888888;
+	border-radius: 20px;
+	padding: 1rem 0;
+	width: 100%;
+	color: #888888;
+	cursor: pointer;
+	text-align: center;
+}
+div#more:hover {
+	border-color: #000000;
+	color: #000000;
+}
+div.body>nav {
+	width: 8rem;
+}
+nav>ul {
+	padding-left: 1rem;
+}
+nav>ul>li {
+	list-style: none;
+	font-size: 1.5rem;
+	cursor: default;
+}
+nav>ul>li>ul>li {
+	list-style: none;
+	color: #999999;
+	font-size: 1.25rem;
+}
+nav>ul>li>ul>li:hover {
+	cursor: pointer;
+	color: #000000;
+}
+div.book {
+	display: inline-block;
+	margin: 1rem;
+	margin-bottom: 1.5rem;
+	padding: 0.5rem;
+	width: 11rem;
+	height: 17rem;
+	vertical-align: top;
+	font-size: 0.75rem;
+	cursor: default;
+}
+div.book>* {
+	display: inline-block;
+	width: 11rem;
+}
+div.book>img {
+	margin: 0 0.5rem 0.5rem 0.5rem;
+	width: 10rem;
+	height: 12rem;
+	cursor: zoom-in;
+}
+span.title {
+	white-space: nowrap;
+	width: 11rem;
+	height: 1rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+div.book>a {
+	color: #888888;
+	text-decoration: none;
+}
+div.book>a:hover {
+	color: #000000;
+}
+div.book>a.read {
+	margin-left: 7rem;
+	width: 4rem;
+}
+img#show {
+	display: none;
+	position: fixed;
+}
+a#back {
+	display: none;
+	position: fixed;
+	bottom: 5rem;
+	right: 5rem;
+	border-top-left-radius: 2rem 4rem;
+	border-top-right-radius: 2rem 4rem;
+	height: 5rem;
+	width: 4rem;
+	background-color: #FFD800;
+	cursor: pointer;
+	font-size: 5rem;
+}
+a#back:hover {
+	box-shadow: 0 8px 10px 1px #000000;
+}
+a#back>div {
+	margin: 0 auto;
+	border-width: 2rem 1.5rem;
+	border-color: transparent transparent #666666 transparent;
+	border-style: solid;
+	height: 0;
+	width: 0;
+}
+.help {
+	padding: 20px;
+	text-align: center;
+	background-color: #FFD800;
+}
+.help>a {
+	font-size: 18px;
+	color: #000;
+}
+</style>
+<body>
+	<header>
+		<h1>啃书</h1>
+		<input type="text" placeholder="找书啃..."><input type="button" value="搜">
+		<ul id="new">
+			<li id="in-btn">登录</li>
+			<li id="up-btn">注册</li>
+		</ul>
+		<ul id="old">
+			<li id="user-btn">nobody</li>
+			<li id="logout-btn">退出</li>
+		</ul>
+	</header>
+	<ul id="user"><li id="book-list-btn">已读图书<div id="book-list"><ul><li>无</li></ul></div></li></ul>
+	<a id="back" title="回到开头" href="#"><div></div></a>
+	<div id="shade"></div>
+	<div id="in">
+		<div class="sign-title">
+			<div>登录</div>
+			<output id="in-oup"></output>
+			<div id="in-close-btn">关闭</div>
+		</div>
+		<form>
+			<label for="in-username-inp">用户名</label>
+			<input class="text username" id="in-username-inp" type="text" placeholder="请输入您的用户名">
+			<label for="in-password-inp">密码</label>（<a id="forget-password">忘记密码？</a>）
+			<input class="text password" id="in-password-inp" type="password" placeholder="请输入您的密码">
+			<input class="button" id="login-btn" type="button" value="登录">
+		</form>
+	</div>
+	<div id="up">
+		<div class="sign-title">
+			<div>注册</div>
+			<output id="up-oup"></output>
+			<div id="up-close-btn">关闭</div>
+		</div>
+		<form>
+			<label for="up-username-inp">用户名</label>
+			<input class="text username" id="up-username-inp" type="text" placeholder="请输入您的用户名">
+			<label for="up-password-inp">密码</label>
+			<input class="text password" id="up-password-inp" type="password" placeholder="请输入您的密码">
+			<label for="uq-password-inp">确认密码</label>
+			<input class="text password" id="uq-password-inp" type="password" placeholder="请确认您的密码">
+			<input class="button" id="register-btn" type="button" value="注册">
+		</form>
+	</div>
+	<div class="body" id="body">
+		<main><div id="main"></div><div id="more">加载更多</div></main>
+		<nav><ul><li>分类<ul id="category"></ul></li><ul></nav>
+	</div>
+	<div class="help">
+		<a href="readme.html">网站说明</a>
+	</div>
+<script>
+'use strict';
+
+var init = function init () {
+	var STEP = 6;
+	var at = 0;
+
+	var main_ele = document.getElementById('main');
+	var more_ele = document.getElementById('more');
+	var show_ele = document.getElementById('show');
+	var category_ele = document.getElementById('category');
+
+	var new_ele = document.getElementById('new');
+	var in_btn = document.getElementById('in-btn');
+	var up_btn = document.getElementById('up-btn');
+
+	var old_ele = document.getElementById('old');
+	var user_btn = document.getElementById('user-btn');
+	var logout_btn = document.getElementById('logout-btn');
+	var user_ele = document.getElementById('user');
+	var book_list_ele = document.getElementById('book-list');
+	var shade_ele = document.getElementById('shade');
+
+	var in_ele = document.getElementById('in');
+	var in_oup = document.getElementById('in-oup');
+	var in_close_btn = document.getElementById('in-close-btn');
+	var in_username_inp = document.getElementById('in-username-inp');
+	var in_password_inp = document.getElementById('in-password-inp');
+	var login_btn = document.getElementById('login-btn');
+
+	var up_ele = document.getElementById('up');
+	var up_oup = document.getElementById('up-oup');
+	var up_close_btn = document.getElementById('up-close-btn');
+	var up_username_inp = document.getElementById('up-username-inp');
+	var up_password_inp = document.getElementById('up-password-inp');
+	var uq_password_inp = document.getElementById('uq-password-inp');
+	var register_btn = document.getElementById('register-btn');
+
+	
+	// 载入图书
+	var add_category = function add_category () {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', '/category', true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				var data = JSON.parse(xhr.responseText);
+				if (Array.isArray(data)) {
+					var frag = document.createDocumentFragment();
+					var li;
+					for (var i = 0, len = data.length; i < len; i = i + 1) {
+						li = document.createElement('li');
+						li.appendChild(document.createTextNode(data[i]));
+						frag.appendChild(li);
+						li.addEventListener('click', (function (subject) {
+							var sub = function () {
+								for (var i = main_ele.childNodes.length - 1; i >= 0; i = i - 1) {
+									main_ele.removeChild(main_ele.childNodes[i]);
+								}
+								if (subject !== '全部') {
+									more_ele.removeEventListener('click', more_fun, false);
+									more_ele.replaceChild(document.createTextNode('全部加载完毕'), more_ele.firstChild);
+								} else {
+									more_ele.addEventListener('click', more_fun, false);
+									more_ele.replaceChild(document.createTextNode('加载更多'), more_ele.firstChild);
+									at = 0;
+								}
+								add_books(subject)
+							};
+							return sub;
+						}(data[i])), false);
+					}
+					category_ele.appendChild(frag);
+				}
+			}
+		};
+		xhr.send(null);
+	};
+	add_category();
+	var add_list = function add_list () {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', '/list', true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				var data = JSON.parse(xhr.responseText);
+				if (data['status'] === 'succeed') {
+					var books = data['books'];
+					var ul = document.createElement('ul');
+					var li, a;
+					for (var i = 0, len = books.length; i < len; i = i + 1) {
+						li = document.createElement('li');
+						a = document.createElement('a');
+						a.href = 'read?id=' + books[i][0];
+						a.appendChild(document.createTextNode(books[i][1]));
+						li.appendChild(a);
+						ul.appendChild(li);
+					}
+					book_list_ele.replaceChild(ul, book_list_ele.firstChild);
+				}
+			}
+		};
+		xhr.send(null);
+	};
+	// 查看用户是否之前访问过
+	var cookies = {};
+	if (document.cookie) {
+		var list = document.cookie.split(';');
+		for (var i = 0, len = list.length; i < len; i = i + 1) {
+			var pair = list[i].split('=');
+			cookies[pair[0].trim()] = pair[1];
+		}
+	}
+	if (cookies['user'] && cookies['user'] !== '') {
+		// 访问过
+		user_btn.replaceChild(document.createTextNode(cookies['user']), user_btn.firstChild);
+		old_ele.style.display = 'inline-block';
+		add_list();
+	} else {
+		// 没有访问过
+		new_ele.style.display = 'inline-block';
+	}
+	var add = function add (book) {
+		var div = document.createElement('div');
+		div.setAttribute('class', 'book');
+		var img = document.createElement('img');
+		img.setAttribute('class', 'cover');
+		img.setAttribute('title', '点击查看大图');
+		img.src = 'images/' + book['id'] + '.png';
+		div.appendChild(img);
+		var span = document.createElement('span');
+		span.setAttribute('class', 'title');
+		span.setAttribute('title', book['title']);
+		span.appendChild(document.createTextNode(book['title']));
+		div.appendChild(span);
+		var a = document.createElement('a');
+		a.setAttribute('class', 'author');
+		//a.href = 'author/' + book['author'];
+		a.appendChild(document.createTextNode(book['author']));
+		div.appendChild(a);
+		var a = document.createElement('a');
+		a.setAttribute('class', 'subject');
+		//a.href = 'subject/' + book['subject'];
+		a.appendChild(document.createTextNode(book['subject']));
+		div.appendChild(a);
+		var a = document.createElement('a');
+		a.setAttribute('class', 'read');
+		a.href = 'read?id=' + book['id'];
+		a.appendChild(document.createTextNode('我要去啃'));
+		div.appendChild(a);
+		img.addEventListener('load', function () {
+			img.addEventListener('click', function () {
+				show_ele.src = 'images/' + book['id'] + '.png';
+				show_ele.addEventListener('load', function () {
+					shade_ele.style.backgroundColor = 'rgba(0,0,0,0.7)';
+					shade_ele.style.display = 'block';
+					show_ele.style.top = 'calc(50% - ' + (show_ele.height / 2) + 'px)';
+					show_ele.style.left = 'calc(50% - ' + (show_ele.width / 2) + 'px)';
+					show_ele.style.display = 'block';
+				}, false);
+			}, false);
+			main_ele.appendChild(div);
+		}, false);		
+	};
+	var add_books = function add_books (subject) {
+		var data = {'at': at, 'step': STEP, 'subject': subject};
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/books', true);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				var data = JSON.parse(xhr.responseText);
+				if (data['status'] === 'succeed' || data['status'] === 'nomore') {
+					for (var i = 0, len = data['books'].length; i < len; i = i + 1) {
+						add(data['books'][i]);
+					}
+					at = Number(data['at']) + 1;
+					if (data['status'] === 'nomore') {
+						more_ele.replaceChild(document.createTextNode('全部加载完毕'), more_ele.firstChild);
+						more_ele.removeEventListener('click', add_books, false);
+					}
+				}
+			}
+		};
+		xhr.send(JSON.stringify(data));
+	};
+	add_books('全部');
+	var more_fun = function more_fun () {
+		add_books('全部');
+	};
+	more_ele.addEventListener('click', more_fun, false);
+
+	in_btn.addEventListener('click', function () {
+		shade_ele.style.backgroundColor = 'rgba(255,255,255,0.8)';
+		shade_ele.style.display = 'block';
+		in_ele.style.display = 'block';
+	}, false);
+	in_close_btn.addEventListener('click', function () {
+		in_ele.style.display = 'none';
+		shade_ele.style.display = 'none';
+		in_oup.value = '';
+	}, false);
+
+	up_btn.addEventListener('click', function () {
+		shade_ele.style.backgroundColor = 'rgba(255,255,255,0.8)';
+		shade_ele.style.display = 'block';
+		up_ele.style.display = 'block';
+	}, false);
+	up_close_btn.addEventListener('click', function () {
+		up_ele.style.display = 'none';
+		shade_ele.style.display = 'none';
+		up_oup.value = '';
+	}, false);
+
+	login_btn.addEventListener('click', function () {
+		in_oup.value = '';
+		if (in_username_inp.value === '') {
+			in_username_inp.focus();
+			in_oup.value = '请输入用户名！';
+		} else if (in_password_inp.value === '') {
+			in_password_inp.focus();
+			in_oup.value = '请输入密码！';
+		} else {
+			var data = {
+				'username': in_username_inp.value,
+				'password': in_password_inp.value,
+			};
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', '/login', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					var status = xhr.responseText;
+					if (status === 'succeed') {
+						shade_ele.style.display = 'none';
+						in_ele.style.display = 'none';
+						new_ele.style.display = 'none';
+						user_btn.replaceChild(document.createTextNode(data['username']), user_btn.firstChild);
+						old_ele.style.display = 'inline-block';
+						add_list();
+					} else if (status === 'failed') {
+						in_oup.value = '用户名或密码错误！';
+						in_password_inp.focus();
+					}
+				}
+			};
+			xhr.send(JSON.stringify(data));
+		}
+	}, false);
+	register_btn.addEventListener('click', function () {
+		up_oup.value = '';
+		if (up_username_inp.value === '') {
+			up_username_inp.focus();
+			up_oup.value = '请输入用户名！';
+		} else if (up_password_inp.value === '') {
+			up_password_inp.focus();
+			up_oup.value = '请输入密码！';
+		} else if (uq_password_inp.value === '') {
+			uq_password_inp.focus();
+			up_oup.value = '请在次输入密码！';
+		} else if (up_password_inp.value !== uq_password_inp.value) {
+			up_password_inp.focus();
+			up_oup.value = '两次密码不相同！';
+		} else {
+			// 注册
+			var data = {
+				'username': up_username_inp.value,
+				'password': up_password_inp.value
+			};
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', '/register', true);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					var status = xhr.responseText;
+					if (status === 'succeed') {
+						shade_ele.style.display = 'none';
+						up_ele.style.display = 'none';
+						new_ele.style.display = 'none';
+						user_btn.replaceChild(document.createTextNode(data['username']), user_btn.firstChild);
+						old_ele.style.display = 'inline-block';
+						add_list();
+					} else if (status === 'failed') {
+						up_oup.value = '用户名已被注册！';
+					}
+				}
+			};
+			xhr.send(JSON.stringify(data));
+		}
+	}, false);
+	user_ele.style.display = 'none';
+	user_btn.addEventListener('click', function (e) {
+		if (user_ele.style.display === 'none') {
+			user_ele.style.display = 'block';
+			user_ele.style.left = (e.clientX - 8) + 'px';
+			user_ele.style.top = (e.clientY + 16) + 'px';
+		} else {
+			user_ele.style.display = 'none';
+		}
+	}, false);
+	logout_btn.addEventListener('click', function () {
+		old_ele.style.display = 'none';
+		new_ele.style.display = 'inline-block';
+		user_ele.style.display = 'none';
+		document.cookie = 'user=';
+	}, false);
+	shade_ele.addEventListener('click', function () {
+		in_ele.style.display = 'none';
+		up_ele.style.display = 'none';
+		show_ele.style.display = 'none';
+		shade_ele.style.display = 'none';
+	}, false);
+	document.getElementById('body').addEventListener('click', function () {
+		user_ele.style.display = 'none';
+	}, false);
+};
+document.addEventListener('DOMContentLoaded', init, false);
+</script>
+</body>
+</html>

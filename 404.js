@@ -1,0 +1,1 @@
+exports.err_404 = '<html><head><meta charset="utf-8"><title>404</title><style>h1,h2{text-align: center;}</style></head><body><h1>文件找不到啦！</h1><h2>404</h2></body></html>'

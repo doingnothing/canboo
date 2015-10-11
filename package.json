@@ -1,0 +1,10 @@
+{
+  "name": "CanBoo",
+  "description": "a book reader with html5",
+  "version": "0.0.1",
+  "homepage": "https://github.com/doingnothing/canboo",
+  "author": "doingnothing <lehuading@qq.com>",
+  "devDependencies": {
+    "mysql": "^2.9.0"
+  }
+}

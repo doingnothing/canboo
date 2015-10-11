@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>一起啃布啦！</title>
+	<link rel="icon" href="images/logo.png">
+	<link rel="stylesheet" href="read.css">
+</head>
+<body>
+	<article id="main"><div></div></article>
+	<div id="header"><div id="menu-btn"></div><div id="book-title"></div><div id="page-number">0</div></div>
+<div id="menu">
+	<div id="render-btn"></div><div id="contents-btn"></div><div id="detail-btn"></div><div id="account-btn"></div>
+</div>
+	<div id="account"><a href="/">回主页</a><br><br>已读图书<div id="book-list"><ul><li>无</li></ul></div></div>
+	<div id="detail"></div>
+	<div id="contents"></div>
+	<div id="render">
+		<div id="effect">
+			<p>笛卡尔：我思故我在。
+				<br>I think, therefore I am.
+				<br>知之为知之，不知为不知，是知也。
+				<br>计算机就跟比基尼一样，省去了人们许多的胡思乱想。
+				<br>Computers are like bikinis. They save people a lot of guesswork.
+			</p>
+		</div>
+		<div class="set-panel">
+			<div class="panel">
+				<div>
+					字号：<output class="output" id="output-font-size"></output><output>10</output><input class="range-input" id="font-size" type="range" min="10" max="22" step="1"><output id="max-font-size">22</output>
+				</div>
+				<div>
+					行距：<output class="output" id="output-line-height"></output><output id="min-line-height">16</output><input class="range-input" id="line-height" type="range" min="16" max="50" step="1"><output>50</output>
+				</div>
+				<div>
+					<div class="set-head font-weight">
+						粗细：<div class="button" id="font-weight-normal">正常</div><div class="button" id="font-weight-bold">粗体</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel">
+				<div class="choose">
+					选择：<div class="button" id="font-color">文字颜色</div><div class="button" id="background-color">背景颜色</div><div class="help"></div>
+				</div>
+				<div class="lightness">
+					亮度：<output class="output" id="output-color-l"></output><output>0%</output><input class="range-input" id="color-l" type="range" min="0" max="100" step="1"><output>100%</output>
+				</div>
+				<div class="hue">
+					色相：<output class="output" id="output-color-h"></output><output>0°</output><input class="range-input" id="color-h" type="range" min="0" max="360" step="1"><output>360°</output>
+				</div>
+				<div class="saturation">
+					饱和度：<output class="output" id="output-color-s"></output><output>0%</output><input class="range-input" id="color-s" type="range" min="0" max="100" step="1"><output>100%</output>
+				</div>
+			</div>
+			<div class="show-hide">
+				高级设置<div id="advance-set"></div>
+			</div>
+			<div id="advance-panel">
+				<div class="panel" id="text-shadow">
+					<div class="advance-title">设置文字阴影</div>
+					<div class="shadow-h-v">
+						阴影距离
+						<br>
+						左：<output class="output" id="output-text-shadow-left"></output><output>-20</output><input id="text-shadow-left" type="range" min="-20" max="0" step="1" value="0"><output>0</output>
+						<br>
+						右：<output class="output" id="output-text-shadow-right"></output><output>0</output><input id="text-shadow-right" type="range" min="0" max="20" step="1" value="0"><output>20</output>
+						<br>
+						上：<output class="output" id="output-text-shadow-top"></output><output>-20</output><input id="text-shadow-top" type="range" min="-20" max="0" step="1" value="0"><output>0</output>
+						<br>
+						下：<output class="output" id="output-text-shadow-bottom"></output><output>0</output><input id="text-shadow-bottom" type="range" min="0" max="20" step="1" value="0"><output>20</output>
+					</div>
+					<div class="shadow-blur">
+						模糊距离
+						<br><output class="output" id="output-text-shadow-blur"></output><output>0</output><input id="text-shadow-blur" type="range" min="0" max="20" step="1" value="0"><output>20</output>
+					</div>
+					<div class="shadow-color">
+						阴影颜色
+						<br>
+						亮度：<output class="output" id="output-text-shadow-color-l"></output><output>0%</output><input id="text-shadow-color-l" type="range" min="0" max="100" step="1" value="50"><output>100%</output>
+						<br>
+						色相：<output class="output" id="output-text-shadow-color-h"></output><output>0°</output><input id="text-shadow-color-h" type="range" min="0" max="360" step="1" value="0"><output>360°</output>
+						<br>
+						饱和度：<output class="output" id="output-text-shadow-color-s"></output><output>0%</output><input id="text-shadow-color-s" type="range" min="0" max="100" step="1" value="100"><output>100%</output>
+					</div>
+				</div>
+				<div class="panel" id="font-family">
+					<div class="advance-title">设置中英字体</div>
+					<div>
+						英文字体：<select class="select" id="font-family-en">
+							<option value="">默认</option>
+							<option value="Arial">Arial</option>
+							<option value="Georgia">Georgia</option>
+							<option value="Verdana">Verdana</option>
+							<option value="Garamond">Garamond</option>
+							<option value="Courier New">Courier New</option>
+						</select>
+						中文字体：<select class="select" id="font-family-zh">
+							<option value="">默认</option>
+							<option value="STSong">华文宋体</option>
+							<option value="SimSun">宋体</option>
+							<option value="STFangsong">华文仿宋</option>
+							<option value="Fangsong">仿宋</option>
+							<option value="STKaiTi">华文楷体</option>
+							<option value="KaiTi">楷体</option>
+							<option value="STLiTi">华文隶书</option>
+							<option value="LiSu">隶书</option>
+							<option value="STXihei">华文细黑</option>
+							<option value="Microsoft YaHei">微软雅黑</option>
+							<option value="HeiTi">黑体</option>
+							<option value="YouYuan">幼圆</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="control">
+			<div class="do" id="undo" title="上一次设置"></div><div class="do" id="todo" title="下一次设置"></div><div class="ae" id="apply" title="效果应用"></div><div class="ae" id="exit" title="退出设置"></div>
+		</div>
+	</div>
+<script src="images.js"></script>
+<script src="read.js"></script>
+</body>
+</html>
