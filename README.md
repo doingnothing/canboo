@@ -1,6 +1,10 @@
 # canboo
 book reader with html5
 
-# click run.bat to run server at windows
+# Windows
+just click run.bat
 
-# node server.js // at linux
+# Linux, Mac
+type
+  node server.js
+in command line to run
